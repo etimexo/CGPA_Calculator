@@ -1,0 +1,28 @@
+* {
+    border: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-align: center;
+}
+#code-list {
+    list-style-type: none;
+    /* background-color: brown; */
+}
+#add-button {
+    /* border: 2px solid yellow; */
+    font-size: 1.2rem;
+    display: inline-block;
+    margin-right: 50px;
+}
+header {
+    margin: 20px auto 10px;
+    font-size: 2rem;
+    font-weight: bold;
+}
+.data {
+    display: flex;
+    justify-content: space-between;
+}
+li {
+    list-style-type: none;
+}
