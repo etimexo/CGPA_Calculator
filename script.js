@@ -65,15 +65,10 @@ addBtn.addEventListener("click", function () {
     let li = document.createElement("li");
     li.innerText = eScoresArr[i];
     examScore.appendChild(li);
-
-    // grade.innerHTML = testScore + examScore
-    // gradePoint.innerHTML = grade * units
   }
 
   let gradeSum = parseInt(newTestScore) + parseInt(newExamScore);
   grade.innerText = gradeSum;
-  // let gradePointProduct = parseInt(newUnit) * parseInt(gradeSum)
-  // gradePoint.innerText = gradePointProduct
   for ( i = 0; i < unitsGottenArr.length; i++) {
     if (gradeSum <= 40) {
         let unitValue = 1
