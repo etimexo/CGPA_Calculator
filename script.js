@@ -1,17 +1,20 @@
+console.log("script loaded");
 let codeContainer = document.getElementById("code");
 const addBtn = document.getElementById("add-button");
 const delBtn = document.getElementById("delete-button");
-let units = document.getElementById("units");
+let unitsObtable = document.getElementById("units");
 let testScore = document.getElementById("test-scores");
 let examScore = document.getElementById("exam-scores");
 let grade = document.getElementById("grades");
+let gradeA = document.getElementById("grades-a");
 let gradePoint = document.getElementById("grade-points");
 let courseList = document.getElementById("course-list");
+let courseGrades = document.getElementById("course-grades");
 let unitsGotten = document.getElementById("units-gotten");
 let gpa = document.getElementById("course-grade-points");
 let courseListArr = [];
 let codeList = [];
-let unitsArr = [];
+let unitsObtableArr = [];
 let tScoresArr = [];
 let eScoresArr = [];
 let gradeArr = [];
@@ -24,19 +27,23 @@ addBtn.addEventListener("click", function () {
   let newUnit = prompt("Enter Course Units");
   let newTestScore = prompt("Enter Test Score");
   let newExamScore = prompt("Enter Exam Score");
-  let newUnits = unitsGottenArr.push
+  // let newUnits = unitsGottenArr.push
 
   // let realUnit = unitN
   codeList.push(newCode);
-  unitsArr.push(newUnit);
+  unitsObtableArr.push(newUnit);
   tScoresArr.push(newTestScore);
   eScoresArr.push(newExamScore);
   codeContainer.innerHTML = "";
-  units.innerHTML = "";
+  unitsObtable.innerHTML = "";
   testScore.innerHTML = "";
   examScore.innerHTML = "";
+  grade.innerHTML = ""
+  
   let gradePointC = 0;
   let totalGradePointC = 0;
+  let gradeSum = parseInt(newTestScore) + parseInt(newExamScore);
+  // grade.innerText = gradeSum;
 
   for (i = 0; i < codeList.length; i++) {
     let li = document.createElement("li");
@@ -45,9 +52,9 @@ addBtn.addEventListener("click", function () {
     // grade.innerHTML = testScore + examScore
     // gradePoint.innerHTML = grade * units
   }
-  for (i = 0; i < unitsArr.length; i++) {
+  for (i = 0; i < unitsObtableArr.length; i++) {
     let li = document.createElement("li");
-    li.innerText = unitsArr[i];
+    li.innerText = unitsObtableArr[i];
     units.appendChild(li);
     // let gradeSum = parseInt(testScore + examScore)
     // grade.innerHTML = gradeSum
@@ -65,29 +72,25 @@ addBtn.addEventListener("click", function () {
     let li = document.createElement("li");
     li.innerText = eScoresArr[i];
     examScore.appendChild(li);
+    
+    if (gradeSum <= 40) {
+      gradeA.innerText = "D";
+      console.log("damn!");
+    } else if (gradeSum >= 41 && gradeSum <= 59) {
+      gradeA.innerText = "C";
+      console.log("average");
+    } else if (gradeSum >= 60 && gradeSum <= 69) {
+      gradeA.innerText = "B";
+      console.log("Not bad");
+    } else if (gradeSum >= 70 && gradeSum <= 100) {
+      gradeA.innerText = "A";
+      console.log("Excellente");
+    } 
+    gradeArr.push(gradeSum);
+
+    let liGrade = document.createElement("li");
+    liGrade.innerText = gradeArr[i];
+    grade.appendChild(liGrade);
   }
 
-  let gradeSum = parseInt(newTestScore) + parseInt(newExamScore);
-  grade.innerText = gradeSum;
-  for ( i = 0; i < unitsGottenArr.length; i++) {
-    if (gradeSum <= 40) {
-        let unitValue = 1
-        unitsGottenArr.push(unitValue)
-        unitsGotten.innerText = unitsGottenArr[i];
-        
-        console.log("damn!");
-      } else if (gradeSum >= 41 && gradeSum <= 59) {
-        unitsGotten.innerText = 2;
-        unitsGottenArr.push(2)
-        console.log("average");
-      } else if (gradeSum >= 60 && gradeSum <= 69) {
-        unitsGotten.innerText = 3;
-        console.log("Not bad");
-      } else if (gradeSum >= 70 && gradeSum <= 100) {
-        unitsGotten.innerText = 4;
-        console.log("Excellente");
-      }
-  }
-  
-  grade.innerText = gradeSum
-})
+});
