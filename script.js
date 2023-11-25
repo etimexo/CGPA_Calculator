@@ -91,4 +91,3 @@ addBtn.addEventListener("click", function () {
   
   grade.innerText = gradeSum
 })
-
